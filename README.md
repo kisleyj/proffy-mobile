@@ -1,25 +1,31 @@
-# Proffy Mobile (App Android)
+# Implementação da FinallyActivity (Tela de Sucesso)
 
-Projeto mobile da plataforma Proffy, desenvolvido em Kotlin para a atividade de validação de formulários.
+Este projeto consiste na implementação de um componente reutilizável (`FinallyActivity`) para a aplicação Proffy, utilizado nos fluxos de conclusão de cadastro e recuperação de senha.
 
-## Integrantes do Grupo
+#### Discentes
+    Laís Pereira
+    Daniela Souza
+    Gabriel Alves
+    Jefferson Kisley
 
-* Gabriel Alves
-* Jefferson Kisley
-* Leonardo Augusto
-* Saulo Rodrigues
+### Alterações Realizadas
 
-## O que foi implementado
+* **Componente Reutilizável:** Criação da `FinallyActivity` que recebe dados dinâmicos via `Intent` (título, descrição e texto do botão).
+* **Layout Centralizado:** Ajuste das constraints no XML para garantir que o ícone e os textos fiquem centralizados verticalmente e alinhados conforme o design original.
+* **Navegação de Cadastro e Recuperação de Senha:** Implementação das lógicas nas `RegisterStepTwoActivity` e `ForgotActivity` para redirecionar para a tela de sucesso e para o Login.
+* **Gestão da Pilha de Activities:** Uso de flags (`FLAG_ACTIVITY_CLEAR_TASK`) para impedir que o usuário volte para as telas de formulário após concluir a ação.
 
-* Fluxo de cadastro de usuário em duas etapas.
-* Validação local dos campos:
-  * Nome (mínimo 4 caracteres)
-  * Sobrenome (mínimo 4 caracteres)
-  * E-mail (formato válido)
-  * Senha (mínimo 6 caracteres)
 
-## Telas do Aplicativo
+## Screenshots
 
-<img src="./screenshots/nome.jpg" alt="Tela de Nome e Sobrenome" width="400">
-<img src="./screenshots/email_senha.jpg" alt="Tela de E-mail e Senha" width="400">
-<img src="./screenshots/concluido.jpg" alt="Tela de Cadastro Concluído" width="400">
+Abaixo estão as capturas de tela dos fluxos funcionando após as correções:
+
+### Fluxo de Cadastro Concluído
+_Tela exibida após o usuário finalizar o cadastro com sucesso._
+
+<img src="./screenshots/cadastro.jpg" alt="Cadastro Concluído" width="400">
+
+### Fluxo de Recuperação de Senha
+_Tela exibida após o usuário solicitar a redefinição de senha._
+
+<img src="./screenshots/senha.jpg" alt="Redefinição de senha" width="400">
