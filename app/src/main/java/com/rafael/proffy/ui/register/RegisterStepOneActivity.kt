@@ -29,11 +29,21 @@ class RegisterStepOneActivity : AppCompatActivity() {
             insets
         }
 
-        binding.buttonGoBack.setOnClickListener {
+        val buttonGoBackLogin = binding.buttonGoBack
+        val textInputFirstName = binding.textInputEditFirstName
+        val textInputLastName = binding.textInputLayoutLastName
+        val buttonNext = binding.buttonNext
+
+        val enabledButtonColor = ContextCompat.getColor(this, R.color.purple)
+        val disabledButtonColor = ContextCompat.getColor(this, R.color.shape_disable)
+
+        setButtonState(true, enabledButtonColor, disabledButtonColor)
+
+        buttonGoBackLogin.setOnClickListener {
             goBack()
         }
 
-        binding.buttonNext.setOnClickListener {
+        buttonNext.setOnClickListener {
             handleNextStep()
         }
     }
@@ -42,44 +52,31 @@ class RegisterStepOneActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun validateFirstName(): Boolean {
-        val name = binding.textInputLayoutFirstName.editText?.text.toString().trim()
+    private fun setButtonState(enabled: Boolean, enabledColor: Int, disabledColor: Int) {
+        binding.buttonNext.isEnabled = enabled
+        val color = if (enabled) enabledColor else disabledColor
 
-        return if (name.length < 4) {
-            binding.textInputLayoutFirstName.error = "Nome deve conter no mínimo 4 caracteres."
-            false
-        } else {
-            binding.textInputLayoutFirstName.error = null // Limpa o erro
-            true
-        }
+        binding.buttonNext.backgroundTintList = ColorStateList.valueOf(color)
+        val textColor = ContextCompat.getColor(this, R.color.shape_01_white)
+
+        binding.buttonNext.setTextColor(textColor)
     }
-
-    private fun validateLastName(): Boolean {
-        // Usamos o ID do layout: text_input_layout_last_name
-        val lastName = binding.textInputLayoutLastName.editText?.text.toString().trim()
-
-        return if (lastName.length < 4) {
-            binding.textInputLayoutLastName.error = "Sobrenome deve conter no mínimo 4 caracteres."
-            false
-        } else {
-            binding.textInputLayoutLastName.error = null // Limpa o erro
-            true
-        }
-    }
-
 
     private fun handleNextStep() {
-        val isFirstNameValid = validateFirstName()
-        val isLastNameValid = validateLastName()
+        val firstName = binding.textInputEditFirstName.text.toString()
+        val lastName = binding.textInputEditLastName.text.toString()
 
-        if (isFirstNameValid && isLastNameValid) {
-            val firstName = binding.textInputEditFirstName.text.toString()
-            val lastName = binding.textInputEditLastName.text.toString()
-
-            val intent = Intent(this, RegisterStepTwoActivity::class.java)
-            intent.putExtra("firstName", firstName)
-            intent.putExtra("lastName", lastName)
-            startActivity(intent)
-        }
+        val intent = Intent(this, RegisterStepTwoActivity::class.java)
+        intent.putExtra("firstName", firstName)
+        intent.putExtra("lastName", lastName)
+        startActivity(intent)
     }
 }
+
+
+
+
+
+
+
+

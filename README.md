@@ -7,6 +7,7 @@ Projeto mobile da plataforma Proffy, desenvolvido em Kotlin para a atividade de 
 * Gabriel Alves
 * Jefferson Kisley
 * Leonardo Augusto
+* Saulo Rodrigues
 
 ## O que foi implementado
 

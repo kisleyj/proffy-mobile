@@ -1,5 +1,6 @@
 package com.rafael.proffy.ui.forgot
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.util.Patterns
@@ -11,6 +12,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.addTextChangedListener
 import com.rafael.proffy.R
 import com.rafael.proffy.databinding.ActivityForgotBinding
+import com.rafael.proffy.ui.FinallyActivity
 
 class ForgotActivity : AppCompatActivity() {
 
@@ -31,7 +33,6 @@ class ForgotActivity : AppCompatActivity() {
             insets
         }
 
-        // Definir as cores do botão para os estados
         val enabledButtonColor = ContextCompat.getColor(this, R.color.green)
         val disabledButtonColor = ContextCompat.getColor(this, R.color.shape_disable)
 
@@ -41,6 +42,15 @@ class ForgotActivity : AppCompatActivity() {
 
         buttonGoBack.setOnClickListener {
             goBack()
+        }
+
+        buttonSendEmail.setOnClickListener {
+            val intent = Intent(this, FinallyActivity::class.java)
+            intent.putExtra("title", "Redefinição\nenviada!")
+            intent.putExtra("subtitle", "Boa, agora é só checar o e-mail que foi enviado para você\nredefinir sua senha e aproveitar os estudos.")
+            intent.putExtra("buttonText", "Voltar ao login")
+            startActivity(intent)
+            finish()
         }
 
         editTextEmail.addTextChangedListener { text ->
@@ -75,15 +85,3 @@ class ForgotActivity : AppCompatActivity() {
         buttonSendEmail.setTextColor(textColor)
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
